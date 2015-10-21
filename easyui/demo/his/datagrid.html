@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../../themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="../demo.css">
+	<script type="text/javascript" src="../../jquery.min.js"></script>
+	<script type="text/javascript" src="../../jquery.easyui.min.js"></script>
+</head>
+<body>
+	<div style="margin:20px 0;"></div>
+	<table id="dg"  style="width:100%;height:100%"
+			data-options="rownumbers:true,singleSelect:true,pagination:true,url:'datagrid_data1.json',method:'get'">
+		<thead>
+			<tr>
+				<th data-options="field:'name',width:80">姓名</th>
+				<th data-options="field:'sex',width:100">性别</th>
+				<th data-options="field:'empclass',width:80,align:'right'">员工类别</th>
+				<th data-options="field:'title',width:80,align:'right'">职称</th>
+				<th data-options="field:'education',width:240">学历</th>
+				<th data-options="field:'department',width:60,align:'center'">部门</th>
+				<th data-options="field:'workstate',width:80,align:'right'">在职状态</th>
+				<th data-options="field:'workdate',width:240">工作日期</th>
+				<th data-options="field:'phonenumber',width:60,align:'center'">电话</th>
+			</tr>
+		</thead>
+	</table>
+	<script type="text/javascript">
+		$(function(){
+			var pager = $('#dg').datagrid().datagrid('getPager');	// get the pager of datagrid
+			pager.pagination({
+				buttons:[{
+					iconCls:'icon-search',
+					handler:function(){
+						alert('search');
+					}
+				},{
+					iconCls:'icon-add',
+					handler:function(){
+						alert('add');
+					}
+				},{
+					iconCls:'icon-edit',
+					handler:function(){
+						alert('edit');
+					}
+				}]
+			});			
+		})
+	</script>
+</body>
+</html>

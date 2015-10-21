@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Full Layout - jQuery EasyUI Demo</title>
+	<link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../../themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="../demo.css">
+	<script type="text/javascript" src="../../jquery.min.js"></script>
+	<script type="text/javascript" src="../../jquery.easyui.min.js"></script>
+</head>
+<body class="easyui-layout">
+	<div data-options="region:'north',border:false" style="height:40px;background:#B3DFDA;overflow:visible;padding:10px">
+		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-add'" style="margin:0 10px;"onclick="$('#w').window('open')">添加</a>
+		<a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-edit'" style="margin:0 10px;">修改</a>
+		<a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-remove'" style="margin:0 10px;">删除</a>
+		<a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-print'" style="margin:0 10px;">打印</a>
+		<a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-cancel'" style="margin:0 10px;">关闭</a>
+	</div>
+	<div id="w" class="easyui-window" title="员工信息维护" data-options="modal:true,closed:true,iconCls:'icon-save'" style="width:410px;height:530px;overflow:visible;padding:10px;">
+		<div style="margin 0 0 0 0;"></div>
+	<div class="easyui-tabs" style="width:100%;height:100%">
+		<div title="基本信息" style="padding:0">
+			<div style="padding:10px 10px 20px 20px">
+	        <form id="ff" method="post">
+	    	<table cellpadding="5">
+	    		<tr>
+	    			<td>姓名:</td>
+	    			<td><input class="easyui-textbox" type="text" name="name" data-options="required:true"style="width:150px"></input></td>
+	    		</tr>
+	    		<tr>
+	    			<td>工作证号:</td>
+	    			<td><input class="easyui-textbox" type="text" name="workID" data-options="required:true" style="width:150px"></input></td>
+	    		</tr>
+	    		<tr>
+	    			<td>性别:</td>
+	    			<td><select class="easyui-combobox" name="sex" data-options="panelHeight:'auto'" style="width:150px"><option value="man">男</option><option value="woman">女</option></select></td>
+	    		</tr>
+	    		<tr>
+	    			<td>婚姻:</td>
+	    			<td><select class="easyui-combobox" name="merge" data-options="panelHeight:'auto'" style="width:150px"><option value="yh">已婚</option><option value="wh">未婚</option></select></td>
+	    		</tr>
+	    		<tr>
+	    			<td>身份证号:</td>
+	    			<td><input class="easyui-textbox" type="text" name="ID" data-options="required:true" style="width:150px"></input></td>
+	    		</tr>
+				<tr>
+				    <td>出生日期:</td>
+	    			<td><input class="easyui-datebox" type="text" name="birthday" style="width:150px"></input></td>
+				</tr>
+				<tr>
+	    			<td>学历:</td>
+	    			<td><select class="easyui-combobox" name="sex" data-options="panelHeight:'auto'" style="width:250px"><option value="bs">博士</option><option value="ss">硕士</option><option value="bk">本科</option><option value="dz">大专<option value="qt">其他</option></select></td>
+	    		</tr>
+				<tr>
+	    			<td>民族:</td>
+	    			<td><select class="easyui-combobox" name="sex" data-options="panelHeight:'auto'" style="width:250px"><option value="hz">汉族</option><option value="qt">其他</option></select></td>
+	    		</tr>
+				<tr>
+	    			<td>政治面貌:</td>
+	    			<td><select class="easyui-combobox" name="sex" data-options="panelHeight:'auto'" style="width:250px"><option value="dy">党员</option><option value="qt">其他</option></select></td>
+	    		</tr>
+				<tr>
+	    			<td>宗教信仰:</td>
+	    			<td><select class="easyui-combobox" name="sex" data-options="panelHeight:'auto'" style="width:250px"><option value="w">无</option><option value="fj">佛教</option><option value="msl">穆斯林</option><option value="jdj">基督教</option><option value="qt">其他</option></select></td>
+	    		</tr>
+				<tr>
+	    			<td>技术职称:</td>
+	    			<td><select class="easyui-combobox" name="sex" data-options="panelHeight:'auto'" style="width:250px"></select></td>
+	    		</tr>
+	    	</table>
+	    </form>
+	    <div style="text-align:center;padding:5px">
+	    	<a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()">确定</a>
+	    	<a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()">取消</a>
+	    </div>
+	    </div>
+		<script>
+		function submitForm(){
+			$('#ff').form('submit');
+		}
+		function clearForm(){
+			$('#ff').form('clear');
+		}
+	    </script>
+	</div>
+		<div title="管理">
+		    <div style="padding:10px 10px 20px 20px">
+	        <form id="a" method="post">
+	    	<table cellpadding="5">
+	    		<tr>
+	    			<td>部门:</td>
+	    			<td><input class="easyui-textbox" type="text" name="bm" data-options="required:true"style="width:150px"></input></td>
+	    		</tr>
+	    		<tr>
+	    			<td>职务:</td>
+	    			<td><input class="easyui-textbox" type="text" name="zw" data-options="required:true" style="width:150px"></input></td>
+	    		</tr>
+	    		<tr>
+	    			<td>部门2:</td>
+	    			<td><input class="easyui-textbox" type="text" name="bm2" data-options="required:true"style="width:150px"></input></td>
+	    		</tr>
+	    		<tr>
+	    			<td>合同编号:</td>
+	    			<td><input class="easyui-textbox" type="text" name="htbh" data-options="required:true" style="width:250px"></input></td>
+	    		</tr>
+	    		<tr>
+	    			<td>档案编号:</td>
+	    			<td><input class="easyui-textbox" type="text" name="dabh" data-options="required:true" style="width:250px"></input></td>
+	    		</tr>
+				<tr>
+	    			<td>输入码:</td>
+	    			<td><input class="easyui-textbox" type="text" name="srm" data-options="required:true" style="width:250px"></input></td>
+	    		</tr>
+				<tr>
+				    <td>工作日期:</td>
+	    			<td><input class="easyui-datebox" type="text" name="gzrq" style="width:250px"></input></td>
+				</tr>
+				<tr>
+	    			<td>干部职别:</td>
+	    			<td><select class="easyui-combobox" name="xl" data-options="panelHeight:'auto'" style="width:250px"><option value="bs">博士</option><option value="ss">硕士</option><option value="bk">本科</option><option value="dz">大专<option value="qt">其他</option></select></td>
+	    		</tr>
+				<tr>
+	    			<td>在职状态:</td>
+	    			<td><select class="easyui-combobox" name="sex" data-options="panelHeight:'auto'" style="width:250px"><option value="hz">汉族</option><option value="qt">其他</option></select></td>
+	    		</tr>
+				<tr>
+	    			<td>员工类型:</td>
+	    			<td><select class="easyui-combobox" name="sex" data-options="panelHeight:'auto'" style="width:250px"><option value="dy">党员</option><option value="qt">其他</option></select></td>
+	    		</tr>
+				<tr>
+	    			<td>具有处方权:</td>
+	    			<td><select class="easyui-combobox" name="sex" data-options="panelHeight:'auto'" style="width:250px"><option value="man">是</option><option value="woman">否</option></select></td>
+	    		</tr>
+	    	</table>
+	    </form>
+	    <div style="text-align:center;padding:5px">
+	    	<a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()">确定</a>
+	    	<a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()">取消</a>
+	    </div>
+	    </div>
+		<script>
+		function submitForm(){
+			$('#a').form('submit');
+		}
+		function clearForm(){
+			$('#a').form('clear');
+		}
+	    </script>
+		</div>
+		<div title="联系方式">
+		   <div style="padding:10px 10px 20px 20px">
+	        <form id="b" method="post">
+	    	<table cellpadding="5">
+			    <tr>
+	    			<td>国籍:</td>
+	    			<td><select class="easyui-combobox" name="country" data-options="panelHeight:'auto'" style="width:250px"><option value="bs">中国</option><option value="ss">硕士</option><option value="bk">本科</option><option value="dz">大专<option value="qt">其他</option></select></td>
+	    		</tr>
+				<tr>
+	    			<td>省份:</td>
+	    			<td><select class="easyui-combobox" name="stata" data-options="panelHeight:'auto'" style="width:250px"><option value="hz">湖北</option><option value="qt">其他</option></select></td>
+	    		</tr>
+				<tr>
+	    			<td>城市:</td>
+	    			<td><select class="easyui-combobox" name="city" data-options="panelHeight:'auto'" style="width:250px"><option value="dy">武汉</option><option value="qt">其他</option></select></td>
+	    		</tr>
+				<tr>
+	    			<td>县区:</td>
+	    			<td><select class="easyui-combobox" name="xq" data-options="panelHeight:'auto'" style="width:250px"><option value="w">洪山区</option><option value="fj">佛教</option><option value="msl">穆斯林</option><option value="jdj">基督教</option><option value="qt">其他</option></select></td>
+	    		</tr>
+	    		<tr>
+	    			<td>现住址:</td>
+	    			<td><input class="easyui-textbox" type="text" name="address" data-options="required:true" style="width:250px"></input></td>
+	    		</tr>
+	    		<tr>
+	    			<td>邮政编码:</td>
+	    			<td><input class="easyui-textbox" type="text" name="yzbm" data-options="required:true" style="width:250px"></input></td>
+	    		</tr>
+	    		<tr>
+	    			<td>联系电话:</td>
+	    			<td><select class="easyui-textbox" name="phonenumber" data-options="required:true" style="width:250px"></input></td>
+	    		</tr>
+	    		<tr>
+	    			<td>电子邮箱:</td>
+	    			<td><select class="easyui-textbox" name="e-mail" data-options="required:true" style="width:250px"></input></td>
+	    		</tr>
+	    		<tr>
+	    			<td>个人主页:</td>
+	    			<td><input class="easyui-textbox" type="text" name="personPage" data-options="required:true" style="width:250px"></input></td>
+	    		</tr>
+				<tr>
+				    <td>QQ号码:</td>
+	    			<td><input class="easyui-textbox" type="text" name="qq" data-options="required:true" style="width:250px"></input></td>
+				</tr>
+				
+				<tr>
+	    			<td>技术职称:</td>
+	    			<td><select class="easyui-combobox" name="sex" data-options="panelHeight:'auto'" style="width:250px"></select></td>
+	    		</tr>
+	    	</table>
+	    </form>
+	    <div style="text-align:center;padding:5px">
+	    	<a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()">确定</a>
+	    	<a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()">取消</a>
+	    </div>
+	    </div>
+		<script>
+		function submitForm(){
+			$('#b').form('submit');
+		}
+		function clearForm(){
+			$('#b').form('clear');
+		}
+	    </script>
+		</div>
+		<div title="个人简介">
+		      <div style="padding:10 10 10 10">
+	    <form id="c" method="post">
+	    	<table>
+	    		<tr>
+	    			<td><input class="easyui-textbox" name="message" data-options="multiline:true,required:true" style="width:365px;height:400px"></input></td>
+	    		</tr>
+	    	</table>
+	    </form>
+	    <div style="text-align:center;padding:5px">
+	    	<a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()">确定</a>
+	    	<a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()">取消</a>
+	    </div>
+	    </div>
+	<script>
+		function submitForm(){
+			$('#c').form('submit');
+		}
+		function clearForm(){
+			$('#c').form('clear');
+		}
+	</script>
+		</div>
+	</div>
+	</div>
+	<div data-options="region:'west',split:true,title:'导航菜单'" style="width:200px;padding:10px;">
+	    <!--<ul class="easyui-tree" data-options="url:'tree_data1.json',method:'get',animate:true,dnd:true"></ul>-->
+		<div class="easyui-accordion" style="border:none;width:100%;height:100%;">
+		<div title="门诊临床科室"  style="padding:10px">
+           <!--<a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-ok'" style="overflow:auto;width: 100%;padding:5px">营销机会管理</a>-->
+		   <ul id="tree" >
+		      <li data-options="id:1,attributes:{href:'rowediting.html'}">
+				<span>儿科保健</span>
+			</li>
+			<li data-options="state:'closed',id:2">
+				<span>妇女保健</span>
+					<ul>
+						<li data-options="id:21,attributes:{href:'rowediting.html'}">
+						<span>产科门诊</span>
+						</li>
+						<li data-options="id:22,attributes:{href:'rowediting.html'}">
+						<span>青春保健门诊</span>
+						</li>
+						<li data-options="id:23,attributes:{href:'rowediting.html'}">
+						<span>更年期保健门诊</span>
+						</li>
+						<li data-options="id:24,attributes:{href:'rowediting.html'}">
+						<span>产后复查门诊</span>
+						</li>
+						<li data-options="id:25,attributes:{href:'rowediting.html'}">
+						<span>乳腺保健门诊</span>
+						</li>
+						<li data-options="id:26,attributes:{href:'rowediting.html'}">
+						<span>婚前检查门诊</span>
+						</li>
+						<li data-options="id:27,attributes:{href:'rowediting.html'}">
+						<span>高危妊娠筛查门诊</span>
+						</li>
+					</ul>
+						
+			</li>
+			<li data-options="id:3,attributes:{href:'rowediting2.html'}">
+				<span>乳腺专科</span>
+			</li>	
+			<li data-options="state:'closed',id:4">
+				<span>妇科门诊部</span>
+					<ul>
+						<li data-options="id:41,attributes:{href:'rowediting.html'}">
+						<span>妇科门诊</span>
+						</li>
+						<li data-options="id:42,attributes:{href:'rowediting.html'}">
+						<span>中医妇科门诊</span>
+						</li>
+					</ul>
+			</li>
+			<li data-options="id:5,attributes:{href:'rowediting.html'}">
+				<span>儿科门诊</span>
+			</li>
+			<li data-options="id:6,attributes:{href:'rowediting.html'}">
+				<span>内科门诊</span>
+			</li>
+			<li data-options="id:7,attributes:{href:'rowediting.html'}">
+				<span>外科门诊</span>
+			</li>
+			<li data-options="id:8,attributes:{href:'rowediting.html'}">
+				<span>急诊科</span>
+			</li>
+			<li data-options="id:9,attributes:{href:'rowediting.html'}">
+				<span>不孕不育科</span>
+			</li>
+			<li data-options="id:10,attributes:{href:'rowediting.html'}">
+				<span>补录信息</span>
+			</li>
+			<li data-options="id:11,attributes:{href:'rowediting.html'}">
+				<span>检验科</span>
+			</li>
+			<li data-options="id:12,attributes:{href:'rowediting.html'}">
+				<span>体检科</span>
+			</li>
+			<li data-options="id:13,attributes:{href:'rowediting.html'}">
+				<span>退费处</span>
+			</li>
+		   </ul>
+		   <script>
+                $(function () {
+                $('#tree').tree({
+                    method: 'get', onClick: function (node) {
+                    if (node.attributes && node.attributes.href) {//存在href配置
+                    var exists = $('#tt').tabs('exists', node.text); //判断是否存在tab，不存在添加，存在则选取这个tab
+                    $('#tt').tabs(exists ? 'select' : 'add',exists?node.text: { title: node.text, href: node.attributes.href, closable: true });
+                    }
+                    }
+                });
+                });
+            </script>
+            
+		</div>
+		<div title="住院临床科室" style="padding:10px">
+		<ul id="tree2" >
+		      <li data-options="state:'closed',id:1">
+				<span>儿科</span>
+				     <ul>
+						<li data-options="id:11,attributes:{href:'rowediting.html'}">
+						<span>儿科病区</span>
+						</li>
+						<li data-options="id:12,attributes:{href:'rowediting.html'}">
+						<span>新生儿病区</span>
+						</li>
+					</ul>
+			</li>
+			<li data-options="id:2,attributes:{href:'rowediting.html'}">
+				<span>妇科</span>
+			</li>
+			<li data-options="id:3,attributes:{href:'rowediting.html'}">
+				<span>产科</span>
+			</li>
+			<li data-options="id:4,attributes:{href:'rowediting.html'}">
+				<span>外科</span>
+			</li>
+			<li data-options="id:5,attributes:{href:'rowediting.html'}">
+				<span>手术室</span>
+			</li>
+		   </ul>
+		   <script>
+                $(function () {
+                $('#tree2').tree({
+                    method: 'get', onClick: function (node) {
+                    if (node.attributes && node.attributes.href) {//存在href配置
+                    var exists = $('#tt').tabs('exists', node.text); //判断是否存在tab，不存在添加，存在则选取这个tab
+                    $('#tt').tabs(exists ? 'select' : 'add',exists?node.text: { title: node.text, href: node.attributes.href, closable: true });
+                    }
+                    }
+                });
+                });
+            </script>
+		
+		</div>
+		<div title="医技科室" style="padding:10px">
+		    <ul id="tree3" >
+		      <li data-options="id:1,attributes:{href:'rowediting.html'}">
+				<span>心电图</span>
+			</li>
+			<li data-options="id:2,attributes:{href:'rowediting.html'}">
+				<span>B超室</span>
+			</li>
+			<li data-options="id:3,attributes:{href:'rowediting.html'}">
+				<span>放射科</span>
+			</li>
+			<li data-options="id:4,attributes:{href:'rowediting.html'}">
+				<span>检验中心</span>
+			</li>
+			<li data-options="id:5,attributes:{href:'rowediting.html'}">
+				<span>阴道镜</span>
+			</li>
+			<li data-options="id:6,attributes:{href:'rowediting.html'}">
+				<span>病理科</span>
+			</li>
+			<li data-options="id:7,attributes:{href:'rowediting.html'}">
+				<span>利普刀</span>
+			</li>
+		   </ul>
+		   <script>
+                $(function () {
+                $('#tree3').tree({
+                    method: 'get', onClick: function (node) {
+                    if (node.attributes && node.attributes.href) {//存在href配置
+                    var exists = $('#tt').tabs('exists', node.text); //判断是否存在tab，不存在添加，存在则选取这个tab
+                    $('#tt').tabs(exists ? 'select' : 'add',exists?node.text: { title: node.text, href: node.attributes.href, closable: true });
+                    }
+                    }
+                });
+                });
+            </script>
+		</div>
+		<div title="药械科室" style="padding:10px">
+		    <ul id="tree4" >
+		      <li data-options="id:1,attributes:{href:'rowediting.html'}">
+				<span>门诊药房</span>
+			</li>
+			<li data-options="id:2,attributes:{href:'rowediting.html'}">
+				<span>住院药房</span>
+			</li>
+			<li data-options="id:3,attributes:{href:'rowediting.html'}">
+				<span>中药房</span>
+			</li>
+			<li data-options="id:4,attributes:{href:'rowediting.html'}">
+				<span>低值易耗</span>
+			</li>
+			<li data-options="id:5,attributes:{href:'rowediting.html'}">
+				<span>西药库</span>
+			</li>
+			<li data-options="id:6,attributes:{href:'rowediting.html'}">
+				<span>中药库</span>
+			</li>
+			<li data-options="id:7,attributes:{href:'rowediting.html'}">
+				<span>固定资产</span>
+			</li>
+			<li data-options="id:8,attributes:{href:'rowediting.html'}">
+				<span>疫苗库</span>
+			</li>
+			<li data-options="id:9,attributes:{href:'rowediting.html'}">
+				<span>检验试剂库</span>
+			</li>
+			<li data-options="id:10,attributes:{href:'rowediting.html'}">
+				<span>卫生材料</span>
+			</li>
+			
+		   </ul>
+		   <script>
+                $(function () {
+                $('#tree4').tree({
+                    method: 'get', onClick: function (node) {
+                    if (node.attributes && node.attributes.href) {//存在href配置
+                    var exists = $('#tt').tabs('exists', node.text); //判断是否存在tab，不存在添加，存在则选取这个tab
+                    $('#tt').tabs(exists ? 'select' : 'add',exists?node.text: { title: node.text, href: node.attributes.href, closable: true });
+                    }
+                    }
+                });
+                });
+            </script>
+		</div>
+		<div title="行政科室" style="padding:10px">
+		    <ul id="tree5" >
+		    <li data-options="id:1,attributes:{href:'rowediting.html'}">
+				<span>院长办</span>
+			</li>
+			<li data-options="id:2,attributes:{href:'rowediting.html'}">
+				<span>副院长办</span>
+			</li>
+			<li data-options="id:3,attributes:{href:'rowediting.html'}">
+				<span>书记办</span>
+			</li>
+			<li data-options="id:4,attributes:{href:'rowediting.html'}">
+				<span>财务科</span>
+			</li>
+			<li data-options="id:5,attributes:{href:'rowediting.html'}">
+				<span>病案室</span>
+			</li>
+			<li data-options="id:6,attributes:{href:'rowediting.html'}">
+				<span>办公室</span>
+			</li>
+			<li data-options="id:7,attributes:{href:'rowediting.html'}">
+				<span>总务科</span>
+			</li>
+			<li data-options="id:8,attributes:{href:'rowediting.html'}">
+				<span>人事科教科</span>
+			</li>
+			<li data-options="id:9,attributes:{href:'rowediting.html'}">
+				<span>信息网络中心</span>
+			</li>
+			<li data-options="id:10,attributes:{href:'rowediting.html'}">
+				<span>保健科</span>
+			</li>
+			<li data-options="id:11,attributes:{href:'rowediting.html'}">
+				<span>医疗股</span>
+			</li>
+			<li data-options="id:12,attributes:{href:'rowediting.html'}">
+				<span>院感办</span>
+			</li>
+			<li data-options="id:13,attributes:{href:'rowediting.html'}">
+				<span>市场部</span>
+			</li>
+			<li data-options="id:14,attributes:{href:'rowediting.html'}">
+				<span>健康教育科</span>
+			</li>
+			<li data-options="id:15,attributes:{href:'rowediting.html'}">
+				<span>门诊收款室</span>
+			</li>
+			<li data-options="id:16,attributes:{href:'rowediting.html'}">
+				<span>合管办</span>
+			</li>
+			<li data-options="id:17,attributes:{href:'rowediting.html'}">
+				<span>住院处</span>
+			</li>
+			<li data-options="id:18,attributes:{href:'rowediting.html'}">
+				<span>护理部</span>
+			</li>
+			<li data-options="id:19,attributes:{href:'rowediting.html'}">
+				<span>公共卫生科</span>
+			</li>
+			<li data-options="id:20,attributes:{href:'rowediting.html'}">
+				<span>投诉办</span>
+			</li>
+			<li data-options="id:21,attributes:{href:'rowediting.html'}">
+				<span>妇女卫生项目办</span>
+			</li>
+			<li data-options="id:22,attributes:{href:'rowediting.html'}">
+				<span>工会</span>
+			</li>
+		   </ul>
+		   <script>
+                $(function () {
+                $('#tree5').tree({
+                    method: 'get', onClick: function (node) {
+                    if (node.attributes && node.attributes.href) {//存在href配置
+                    var exists = $('#tt').tabs('exists', node.text); //判断是否存在tab，不存在添加，存在则选取这个tab
+                    $('#tt').tabs(exists ? 'select' : 'add',exists?node.text: { title: node.text, href: node.attributes.href, closable: true });
+                    }
+                    }
+                });
+                });
+            </script>
+		</div>
+		<div title="其他科室" style="padding:10px">
+		<ul id="tree6" >
+		    <li data-options="id:1,attributes:{href:'rowediting.html'}">
+				<span>计划生育</span>
+			</li>
+			<li data-options="id:2,attributes:{href:'rowediting.html'}">
+				<span>门诊注射室</span>
+			</li>
+			<li data-options="id:3,attributes:{href:'rowediting.html'}">
+				<span>消毒供应中心</span>
+			</li>
+		</ul>
+		   <script>
+                $(function () {
+                $('#tree6').tree({
+                    method: 'get', onClick: function (node) {
+                    if (node.attributes && node.attributes.href) {//存在href配置
+                    var exists = $('#tt').tabs('exists', node.text); //判断是否存在tab，不存在添加，存在则选取这个tab
+                    $('#tt').tabs(exists ? 'select' : 'add',exists?node.text: { title: node.text, href: node.attributes.href, closable: true });
+                    }
+                    }
+                });
+                });
+            </script>
+		</div>
+	    </div>
+	</div>
+	<!--<div data-options="region:'south',border:false" style="height:50px;background:#A9FACD;padding:10px;">south region</div>-->
+	<div data-options="region:'center'" style="overflow:visible">
+	    <div style="margin:0 0;"></div> 
+		
+            
+            <div id='tt' class="easyui-tabs" data-options="fit:true,region:'center'" style="width:100%;height:100%">
+			<div title="Welcome" iconCls="icon-page" style="padding:20px;overflow:hidden;"> &nbsp;
+　　        </div>
+			</div>
+            
+    		
+	    <!--<table class="easyui-datagrid" title="Basic DataGrid" style="width:100%;height:100%;overflow:visible"
+			data-options="singleSelect:true,collapsible:true,url:'datagrid_data1.json',method:'get'">
+		<thead>
+			<tr>
+				<th data-options="field:'itemid',width:80">Item ID</th>
+				<th data-options="field:'productid',width:100">Product</th>
+				<th data-options="field:'listprice',width:80,align:'right'">List Price</th>
+				<th data-options="field:'unitcost',width:80,align:'right'">Unit Cost</th>
+				<th data-options="field:'attr1',width:250">Attribute</th>
+				<th data-options="field:'status',width:60,align:'center'">Status</th>
+			</tr>
+		</thead>
+	    </table>
+	    <!--<iframe src="http://www.baidu.com" style="border:none;width:100%;height:100%"></iframe>-->
+	</div>
+</body>
+</html>

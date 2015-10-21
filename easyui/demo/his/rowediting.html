@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../../themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="../demo.css">
+	<script type="text/javascript" src="../../jquery.min.js"></script>
+	<script type="text/javascript" src="../../jquery.easyui.min.js"></script>
+</head>
+<body>
+	<div style="margin:0 0;"></div>
+	
+	<table id="dg1" class="easyui-datagrid"  style="width:100%;height:auto"
+			data-options="
+				iconCls: 'icon-edit',
+				singleSelect: true,
+				toolbar: '#tb1',
+				url: 'datagrid_data1.json',
+				method: 'get',
+				onClickCell: onClickCell
+			">
+		<thead>
+			<tr>
+				
+				<th data-options="field:'name',width:80,editor:'textbox'">姓名</th>
+				<th data-options="field:'sex',width:80,editor:'textbox'">性别</th>
+				<th data-options="field:'empcategory',width:250,editor:'textbox'">员工类别</th>
+				<th data-options="field:'title',width:80,editor:'textbox'">职位</th>
+				<th data-options="field:'education',width:80,editor:'textbox'">学历</th>
+				<th data-options="field:'department',width:250,editor:'textbox'">部门</th>
+				<th data-options="field:'workstate',width:80,editor:'textbox'">就职状态</th>
+				<th data-options="field:'workdate',width:80,editor:'textbox'">工作日期</th>
+				<th data-options="field:'phonenumber',width:250,editor:'textbox'">联系电话</th>
+			</tr>
+		</thead>
+	</table>
+
+	<div id="tb1" style="height:auto">
+		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" onclick="append()">添加</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true" onclick="removeit()">删除</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-save',plain:true" onclick="accept()">保存</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-undo',plain:true" onclick="reject()">撤销</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true" onclick="getChanges()">查看改变</a>
+	</div>
+	
+	<script type="text/javascript">
+		var editIndex = undefined;
+		function endEditing(){
+			if (editIndex == undefined){return true}
+			if ($('#dg1').datagrid('validateRow', editIndex)){
+				var ed = $('#dg1').datagrid('getEditor', {index:editIndex,field:'productid'});
+				var productname = $(ed.target).combobox('getText');
+				$('#dg1').datagrid('getRows')[editIndex]['productname'] = productname;
+				$('#dg1').datagrid('endEdit', editIndex);
+				editIndex = undefined;
+				return true;
+			} else {
+				return false;
+			}
+		}
+		function onClickCell(index, field){
+			if (editIndex != index){
+				if (endEditing()){
+					$('#dg1').datagrid('selectRow', index)
+							.datagrid('beginEdit', index);
+					var ed = $('#dg1').datagrid('getEditor', {index:index,field:field});
+					($(ed.target).data('textbox') ? $(ed.target).textbox('textbox') : $(ed.target)).focus();
+					editIndex = index;
+				} else {
+					$('#dg1').datagrid('selectRow', editIndex);
+				}
+			}
+		}
+		function append(){
+			if (endEditing()){
+				$('#dg1').datagrid('appendRow',{status:'P'});
+				editIndex = $('#dg1').datagrid('getRows').length-1;
+				$('#dg1').datagrid('selectRow', editIndex)
+						.datagrid('beginEdit', editIndex);
+			}
+		}
+		function removeit(){
+			if (editIndex == undefined){return}
+			$('#dg1').datagrid('cancelEdit', editIndex)
+					.datagrid('deleteRow', editIndex);
+			editIndex = undefined;
+		}
+		function accept(){
+			if (endEditing()){
+				$('#dg1').datagrid('acceptChanges');
+			}
+		}
+		function reject(){
+			$('#dg1').datagrid('rejectChanges');
+			editIndex = undefined;
+		}
+		function getChanges(){
+			var rows = $('#dg1').datagrid('getChanges');
+			alert(rows.length+' rows are changed!');
+		}
+	</script>
+</body>
+</html>

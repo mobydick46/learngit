@@ -1,0 +1,83 @@
+[{
+        
+            "id": 1,
+            "text": "儿科保健","attributes": { "href": "tab.txt" }
+        },{ 
+            "id": 2,
+            "text": "妇女保健",
+            "state": "closed",
+            "children": [{
+                "id": 21,
+                "text": "产科门诊"，"attributes": { "href": "tab.txt" }
+            },{
+                "id": 22,
+                "text": "青春期保健门诊"，"attributes": { "href": "tab.txt" }
+            },{
+                "id": 23,
+                "text": "更年期保健门诊"，"attributes": { "href": "tab.txt" }
+            },{
+                "id": 24,
+                "text": "产后复查门诊"，"attributes": { "href": "tab.txt" }
+            },{
+                "id": 25,
+                "text": "乳腺保健门诊"，"attributes": { "href": "tab.txt" }
+            },{
+                "id": 26,
+                "text": "婚前检查门诊"，"attributes": { "href": "tab.txt" }
+            },{
+                "id": 27,
+                "text": "高危妊娠筛查门诊"，"attributes": { "href": "tab.txt" }
+            }]
+		},{
+            "id": 3,
+            "text": "乳腺专科","attributes": { "href": "tab.txt" },
+            "state": "closed",
+		},{
+            "id": 4,
+            "text": "妇科门诊部",
+            "state": "closed",
+            "children": [{
+                "id": 41,
+                "text": "妇科门诊"，"attributes": { "href": "tab.txt" }
+            },{
+                "id": 42,
+                "text": "中医妇科门诊"，"attributes": { "href": "tab.txt" }
+            }]
+		},{
+            "id": 5,
+            "text": "儿科门诊","attributes": { "href": "tab.txt" },
+            "state": "closed",
+		},{
+            "id": 6,
+            "text": "内科门诊","attributes": { "href": "tab.txt" },
+            "state": "closed",
+		},{
+            "id": 7,
+            "text": "外科门诊","attributes": { "href": "tab.txt" },
+            "state": "closed",
+            "id": 8,
+		},{
+            "text": "急诊科","attributes": { "href": "tab.txt" },
+            "state": "closed",
+            "id": 9,
+		},{
+            "text": "不孕不育科","attributes": { "href": "tab.txt" },
+            "state": "closed",
+            "id": 10,
+		},{
+            "text": "补录信息","attributes": { "href": "tab.txt" },
+            "state": "closed",
+        },{
+            "id": 11,
+            "text": "体检科","attributes": { "href": "tab.txt" },
+            "state": "closed",
+        },{
+            "id": 12,
+            "text": "体检科888","attributes": { "href": "tab.txt" },
+            "state": "closed",
+        },{
+            "id": 13,
+            "text": "退费处","attributes": { "href": "tab.txt" },
+            "state": "closed",
+        
+}]
